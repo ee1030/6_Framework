@@ -47,12 +47,12 @@
 			<!-- form-label-group : input태그와 연결된 label의 내용을 input의 placeholder처럼 보이게해주고, 
 				값이 들어올 경우사라지지 않고 글씨가 작아진 상태로 위쪽으로 올라가게 하는 부트스트랩-->
 			<div class="form-label-group">
-				<input type="text" id="memberId" name="memberId" class="form-control" value="" required autofocus> 
+				<input type="text" id="memberId" name="memberId" placeholder="ID" class="form-control" value="" required autofocus> 
 				<label for="memberId">ID</label>
 			</div>
 
 			<div class="form-label-group">
-				<input type="password" id="memberPwd" name="memberPwd" class="form-control" required> 
+				<input type="password" id="memberPwd" name="memberPwd" placeholder="Password" class="form-control" required> 
 				<label for="memberPwd">Password</label>
 			</div>
 

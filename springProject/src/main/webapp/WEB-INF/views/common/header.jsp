@@ -86,11 +86,11 @@
    	</style>
 </head>
 <body id="page-top">
-	<c:if test="${!empty msg}">
+	<c:if test="${!empty swalTitle}">
 		<script>
-			swal({icon : "${status}",
-				 title : "${msg}",
-				 text : "${text}"});
+			swal({icon : "${swalIcon}",
+				 title : "${swalTitle}",
+				 text : "${swalText}"});
 		</script>
 		<c:remove var="msg"/>
 	</c:if>
@@ -112,7 +112,7 @@
             	<c:choose>
             		<%-- 로그인이 되어있지 않은 경우 --%>
             		<c:when test="${empty sessionScope.loginMember }">
-		                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+		                <li class="nav-item"><a class="nav-link" href="${contextPath}/member/login">Login</a></li>
             		</c:when>
             		
             		<%-- 로그인이 되어있는 경우 --%>
