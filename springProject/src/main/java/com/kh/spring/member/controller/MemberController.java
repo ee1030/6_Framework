@@ -1,19 +1,29 @@
 package com.kh.spring.member.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 
 //@Component // 객체(컴포넌트)를 나타내는 일반적인 타입으로 bean 등록 역할을 함
 @Controller // 프레젠테이션 레이어, 웹 애플리케이션에서 전달된 요청 응답을 처리하는 클래스 + bean 등록
 @RequestMapping("/member/*")
 public class MemberController {
+	
+	// Spring 이전에는 .service를 컨트롤러 내에서 공용으로 사용하기 위하여
+	// 필드 또는 최상단 부분에 service 객체를 생성했지만
+	// private MemberService serivce = new MemberServiceImpl();
+	
+	// Spring에서는 객체의 생명 주기를 Spriong Container가 관리할 수 있도록함.
+	// == bean으로 등록하여 IOC를 통해 제어
+	
+	// 빈 스캐닝(component-scan)을 통해 등록된 bean 중 알맞은 bean을 해당 변수에
+	// 의존성 주입(DI)를 진행함
+	@Autowired  
+	private MemberService service;
+	
 
 	/** 로그인 화면 전환용 Controller
 	 * @return viewName
