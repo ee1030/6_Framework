@@ -22,7 +22,7 @@ public class MemberServiceImpl implements MemberService{
 		// DAO를 수행하고 결과를 반환 받음.
 		Member loginMember = dao.loginAction(inputMember);
 				
-		return null;
+		return loginMember;
 	}
 
 }

@@ -19,5 +19,13 @@
 	<result property="memberStatus" column="MEMBER_STATUS"/>
 	<result property="memberGrade" column="MEMBER_GRADE"/>
 </resultMap>
+
+<!-- 로그인 -->
+<select id="loginAction" parameterType="Member" resultMap="member_rm">
+	SELECT * FROM MEMBER
+	WHERE MEMBER_ID = #{memberId}
+	AND MEMBER_PWD = #{memberPwd}
+	AND MEMBER_STATUS = 'Y'
+</select>
 	
 </mapper>
