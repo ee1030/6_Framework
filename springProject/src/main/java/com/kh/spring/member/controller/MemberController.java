@@ -106,7 +106,11 @@ public class MemberController {
 	// 5. @ModelAttribute 어노테이션 생략
 	@RequestMapping("loginAction")
 	public String loginAction(Member inputMember) {
-		System.out.println(inputMember);
+		// System.out.println(inputMember);
+		
+		// 비즈니스 로직 수행 후 결과 반환받기
+		Member loginMember = service.loginAction(inputMember);
+		System.out.println(loginMember); // 결과 확인용
 		
 		return "redirect:/";
 	}
