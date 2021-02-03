@@ -24,7 +24,7 @@
     <link href="${contextPath}/resources/css/resume-styles.css" rel="stylesheet" />
    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
    	
-	<!-- sweetalert : alert창을 꾸밀 수 있게 해주는 라이브러리 https://sweetalert.js.org/ -->
+		<!-- sweetalert : alert창을 꾸밀 수 있게 해주는 라이브러리 https://sweetalert.js.org/ -->
   	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
    
    	<style>
@@ -92,7 +92,9 @@
 				 title : "${swalTitle}",
 				 text : "${swalText}"});
 		</script>
-		<c:remove var="msg"/>
+		<%-- <c:remove var="swalIcon"/>
+		<c:remove var="swalTitle"/>
+		<c:remove var="swalText"/> --%>
 	</c:if>
 
 
@@ -121,7 +123,7 @@
 		                	<a class="nav-link" href="#" style="display:inline">${loginMember.memberName}</a>
 		                	
 		                </li>
-		                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+		                <li class="nav-item"><a class="nav-link" href="${contextPath}/member/logout">Logout</a></li>
             		</c:otherwise>
             	</c:choose>
             	
