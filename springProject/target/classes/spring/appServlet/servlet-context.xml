@@ -42,6 +42,7 @@
 	</beans:bean>
 	
 	<!-- component-scan : 지정된 패키지에 있는 @Component와 그 구체과 요소를 스캔하여
+												(@Controller, @Service, @Repository)
 												bean으로 등록하는 태그.
 		(bean으로 등록됐다 == 스프링 컨테이너에 의해서 생성된 객체다.
 			== 스프링 컨테이너가 제어할 수 있는 객체다.(IOC)
