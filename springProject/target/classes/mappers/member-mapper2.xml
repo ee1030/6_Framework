@@ -26,5 +26,12 @@
 	WHERE MEMBER_ID = #{memberId}
 	AND MEMBER_STATUS = 'Y'
 </select>
+
+<!-- 회원가입 -->
+<insert id="signUp" parameterType="Member">
+	INSERT INTO MEMBER
+	VALUES(SEQ_MNO.NEXTVAL, #{memberId}, #{memberPwd}, #{memberName}, #{memberPhone},
+				 #{memberEmail}, #{memberAddress}, #{memberInterest}, DEFAULT, DEFAULT, DEFAULT)
+</insert>
 	
 </mapper>

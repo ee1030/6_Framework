@@ -1,5 +1,7 @@
 package com.kh.spring.member.model.service;
 
+import com.kh.spring.member.model.vo.Member;
+
 public interface MemberService2 {
 
    // 인터페이스 내에 작성되는 모든 필드는 public static final 이다.
@@ -11,5 +13,11 @@ public interface MemberService2 {
 	 * @return result
 	 */
 	public abstract int idDupCheck(String memberId);
+
+	/** 회원가입 Service
+	 * @param signUpMember
+	 * @return result
+	 */
+	public abstract int signUp(Member signUpMember);
 
 }

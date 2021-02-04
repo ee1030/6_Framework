@@ -120,7 +120,7 @@
             		<%-- 로그인이 되어있는 경우 --%>
             		<c:otherwise>
 		                <li class="nav-item">
-		                	<a class="nav-link" href="#" style="display:inline">${loginMember.memberName}</a>
+		                	<a class="nav-link" href="${contextPath}/member2/mypage" style="display:inline">${loginMember.memberName}</a>
 		                	
 		                </li>
 		                <li class="nav-item"><a class="nav-link" href="${contextPath}/member/logout">Logout</a></li>

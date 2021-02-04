@@ -371,12 +371,26 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 
 			for ( var key in signUpCheck) {
 				if (!signUpCheck[key]) {
-					alert("일부 입력값이 잘못되었습니다.");
-					var id = "#" + key;
-					$(id).focus();
+					var str;
+					switch (key) {
+					case "id" : str = "아이디"; break;
+					case "pwd1": str = "비밀번호";	break;
+					case "pwd2": str = "비밀번호 확인";break;
+					case "name": str = "이름";	break;
+					case "phone2":str = "전화번호";break;
+					case "email": str = "이메일"; break;
+					}
+
+					swal({icon:"warning", title:str+" 형식이 유효하지 않습니다."})
+					.then(function(){
+						var id = "#" + key;
+						$(id).focus();
+					});
+					
 					return false;
 				}
 			}
+
 
 			// 입력된 전화번호, 주소 조합하여 form태그에 hidden으로 추가 하기
 			// 왜? -> 커맨드 객체를 이용하여 파라미터를 한번에 받기 쉽게 하기 위하여
