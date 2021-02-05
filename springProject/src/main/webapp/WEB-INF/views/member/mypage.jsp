@@ -63,11 +63,11 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 							<!-- 전화번호1 -->
 							<div class="col-md-3">
 								<select class="custom-select" id="phone1" name="phone1">
-									<option>010</option>
-									<option>011</option>
-									<option>016</option>
-									<option>017</option>
-									<option>019</option>
+									<option <c:if test="${phone[0] == '010'}">selected</c:if> >010</option>
+									<option <c:if test="${phone[0] == '011'}">selected</c:if> >011</option>
+									<option <c:if test="${phone[0] == '016'}">selected</c:if> >016</option>
+									<option <c:if test="${phone[0] == '017'}">selected</c:if> >017</option>
+									<option <c:if test="${phone[0] == '019'}">selected</c:if> >019</option>
 								</select>
 							</div>
 
@@ -261,8 +261,18 @@ input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-i
 			
 		}
 		
-		
-		
+		/*// 전화번호 첫번째 자리를 회원 전화번호 첫째 자리와 일치하는 값으로 선택하기
+		// (function(){})(); -> 즉시 처리 함수
+		// 함수가 정의되자마자 수행되는 함수. 변수명 충돌 현상 방지 + 속도적 측면에서 우위가 있음.
+		(function() {
+			$("#phone1 > option").each(function(index, item) {
+				// index : 현재 접근중인 인덱스
+				// item : 현재 접근중인 요소
+				if ($(item).text() == "${phone[0]}") {
+					$(item).prop("selected", true);
+				}
+			});
+		})();*/
 		
 		//******************** 관심 분야 체크  ***************************
 		// 관심 분야 중 회원정보와 일치하는 부분 체크하기
