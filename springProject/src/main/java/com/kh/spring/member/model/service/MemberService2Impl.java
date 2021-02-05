@@ -116,4 +116,25 @@ public class MemberService2Impl implements MemberService2 {
 		return result;
 	}
 
+	// 회원탈퇴 Service 구현
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int deleteMember(Map<String, Object> map) {
+		String savePwd = dao.selectPwd((int)map.get("memberNo"));
+		
+		int result = 0;
+		
+		if(savePwd != null) { // 비밀번호 조회 성공시
+			// 비밀번호 확인
+			if(enc.matches((String)map.get("memberPwd"), savePwd)) {
+				// 비밀번호가 일치할 경우
+				
+				// 비밀번호 수정 DAO 호출
+				result = dao.deleteMember(map);
+			}
+		}
+		
+		return result;
+	}
+
 }

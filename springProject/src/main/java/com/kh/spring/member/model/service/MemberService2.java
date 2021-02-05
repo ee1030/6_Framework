@@ -34,4 +34,10 @@ public interface MemberService2 {
 	 */
 	public abstract int updatePwd(Map<String, Object> map);
 
+	/** 회원탈퇴 Service
+	 * @param map
+	 * @return result
+	 */
+	public abstract int deleteMember(Map<String, Object> map);
+
 }

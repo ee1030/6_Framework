@@ -54,4 +54,8 @@ public class MemberDAO2 {
 		return sqlSession.update("memberMapper2.updatePwd", map);
 	}
 
+	public int deleteMember(Map<String, Object> map) {
+		return sqlSession.update("memberMapper2.deleteMember", map);
+	}
+
 }

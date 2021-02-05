@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kh.spring.member.model.service.MemberService2;
@@ -189,6 +190,47 @@ public class MemberController2 {
 			swalTitle = "비밀번호 변경 실패";
 			
 			url = "changePwd";
+		}
+		
+		ra.addFlashAttribute("swalIcon", swalIcon);
+		ra.addFlashAttribute("swalTitle", swalTitle);
+		
+		return "redirect:"+url;
+	}
+	
+	@RequestMapping("secession")
+	public String secession() {
+		return "member/secession";
+	}
+	
+	@RequestMapping("deleteMember")
+	public String deleteMember(@RequestParam("memberPwd") String memberPwd,
+							@ModelAttribute("loginMember") Member loginMember,
+							RedirectAttributes ra,
+							SessionStatus status) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberPwd", memberPwd);
+		map.put("memberNo", loginMember.getMemberNo());
+		
+		int result = service.deleteMember(map);
+		
+		String url = null;
+		
+		if(result > 0) {
+			swalIcon = "success";
+			swalTitle = "회원탈퇴 완료";
+			url = "/";
+			status.setComplete();
+		}
+		
+		// 비밀번호 변경 실패 시
+		// error, 비밀번호 변경 실패, 비밀번호 변경 페이지 재요청
+		else {
+			swalIcon = "error";
+			swalTitle = "회원 탈퇴 실패";
+			
+			url = "secession";
 		}
 		
 		ra.addFlashAttribute("swalIcon", swalIcon);
