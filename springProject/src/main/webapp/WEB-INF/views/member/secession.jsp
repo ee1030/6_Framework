@@ -105,6 +105,12 @@
 	<script>
 		// submit 동작
 		function validate() {
+			
+			if($("#currentPwd").val().trim().length == 0) {
+				alert("비밀번호를 입력해 주세요.");
+				$("#currentPwd").focus();
+				return false;
+			}
 
 			if(!$("#agree").prop("checked")){
 				alert("약관에 동의해 주세요.");
