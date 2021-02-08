@@ -1,6 +1,7 @@
 package com.kh.spring.board.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,18 @@ public class BoardServiceImpl implements BoardService{
 		}
 		
 		return board;
+	}
+
+	// 게시글 등록 Service 구현
+	@Override
+	public int insertBoard(Map<String, Object> map) {
+		
+		// 1) 게시글 번호 얻어오기
+		
+		// 2) 게시글 삽입
+		
+		// 3) 게시글 삽입 성공 시 이미지 정보 삽입
+		
+		return 0;
 	}
 }

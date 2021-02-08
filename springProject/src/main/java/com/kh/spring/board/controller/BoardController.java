@@ -1,10 +1,13 @@
 package com.kh.spring.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.kh.spring.board.model.service.BoardService;
 import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.board.model.vo.PageInfo;
+import com.kh.spring.member.model.vo.Member;
 
 @Controller // 컨트롤러임을 알려줌 + bean 등록
 @SessionAttributes({"loginMember"})
@@ -111,6 +115,30 @@ public class BoardController {
 		return "board/boardInsert" + type;
 		// boardInsert1.jsp == 기존 방식
 		// boardInsert2.jsp == summernote 적용 방식
+	}
+	
+	// 게시글 등록 Controller
+	@RequestMapping("{type}/insertAction")
+	public String insertAction(@PathVariable("type") int type,
+								@ModelAttribute Board board,
+								@ModelAttribute("loginMember") Member loginMember) {
+		
+		//System.out.println("type : " + type);
+		//System.out.println(board);
+		//System.out.println(loginMember);
+		
+		// map을 이용하여 필요한 데이터 모두 담기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", loginMember.getMemberNo());
+		map.put("boardTitle", board.getBoardTitle());
+		map.put("boardContent", board.getBoardContent());
+		map.put("categoryCode", board.getCategoryName());
+		map.put("boardType", type);
+		
+		// 게시글 삽입 Service 호출
+		int result = service.insertBoard(map);
+		
+		return null;
 	}
 	
 }

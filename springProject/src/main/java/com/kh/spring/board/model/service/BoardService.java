@@ -1,6 +1,7 @@
 package com.kh.spring.board.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.board.model.vo.PageInfo;
@@ -26,5 +27,11 @@ public interface BoardService {
 	 * @return board
 	 */
 	public abstract Board selectBoard(int boardNo, int type);
+
+	/** 게시글 등록 Service
+	 * @param map
+	 * @return result
+	 */
+	public abstract int insertBoard(Map<String, Object> map);
 
 }

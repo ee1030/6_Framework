@@ -27,11 +27,11 @@
 				- application/x-www-form-urlencoded : 모든 문자를 서버로 전송하기 전에 인코딩 (form태그 기본값)
 				- multipart/form-data : 모든 문자를 인코딩 하지 않음.(원본 데이터가 유지되어 이미지, 파일등을 서버로 전송 할 수 있음.) 
 			-->
-			<form action="insertAction" enctype="multipart/form-data" method="post" role="form" onsubmit="return validate();">
-
+			<form action="insertAction" method="post" role="form" onsubmit="return validate();">
+			<!-- enctype="multipart/form-data" -->
 				<div class="mb-2">
 					<label class="input-group-addon mr-3 insert-label">카테고리</label> 
-					<select	class="custom-select" id="category" name="boardCategory" style="width: 150px;">
+					<select	class="custom-select" id="category" name="categoryName" style="width: 150px;">
 						<option value="10">운동</option>
 						<option value="20">영화</option>
 						<option value="30">음악</option>

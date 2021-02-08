@@ -102,7 +102,7 @@
 					
 						<%-- 북마크나 주소로 인한 직접 접근 시 목록으로 버튼 경로 지정 --%>
 						<c:if test="${empty sessionScope.returnListURL}">
-							<c:set var="listUrl" value="../list/${board.boardCode}" scope="session"/>
+							<c:set var="returnListURL" value="../list/${board.boardCode}" scope="session"/>
 						</c:if>
 						<a class="btn btn-success" href="${sessionScope.returnListURL}">목록으로</a>
 	                	
