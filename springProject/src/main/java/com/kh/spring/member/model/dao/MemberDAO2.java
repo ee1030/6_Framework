@@ -58,8 +58,8 @@ public class MemberDAO2 {
 	 * @param loginMember
 	 * @return result
 	 */
-	public int deleteMember(Member loginMember) {
-		return sqlSession.update("memberMapper2.deleteMember", loginMember);
+	public int deleteMember(int memberNo) {
+		return sqlSession.update("memberMapper2.deleteMember", memberNo);
 	}
 
 }

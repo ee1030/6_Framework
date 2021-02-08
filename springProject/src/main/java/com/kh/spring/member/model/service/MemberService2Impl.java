@@ -111,8 +111,6 @@ public class MemberService2Impl implements MemberService2 {
 			}
 		}
 		
-		
-		
 		return result;
 	}
 
@@ -128,9 +126,8 @@ public class MemberService2Impl implements MemberService2 {
 			// 비밀번호 확인
 			if(enc.matches(loginMember.getMemberPwd(), savePwd)) {
 				// 비밀번호가 일치할 경우
-				
 				// 회원탈퇴 DAO 호출
-				result = dao.deleteMember(loginMember);
+				result = dao.deleteMember(loginMember.getMemberNo());
 			}
 		}
 		
