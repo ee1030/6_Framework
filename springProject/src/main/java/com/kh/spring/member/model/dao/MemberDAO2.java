@@ -55,7 +55,7 @@ public class MemberDAO2 {
 	}
 
 	/** 회원탈퇴 DAO
-	 * @param loginMember
+	 * @param memberNo
 	 * @return result
 	 */
 	public int deleteMember(int memberNo) {
