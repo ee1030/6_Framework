@@ -38,6 +38,6 @@ public interface MemberService2 {
 	 * @param map
 	 * @return result
 	 */
-	public abstract int deleteMember(Map<String, Object> map);
+	public abstract int deleteMember(Member loginMember);
 
 }

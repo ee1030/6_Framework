@@ -204,16 +204,20 @@ public class MemberController2 {
 	}
 	
 	@RequestMapping("deleteMember")
-	public String deleteMember(@RequestParam("memberPwd") String memberPwd,
-							@ModelAttribute("loginMember") Member loginMember,
-							RedirectAttributes ra,
-							SessionStatus status) {
+	public String deleteMember(@ModelAttribute("loginMember") Member loginMember,
+								RedirectAttributes ra,
+								SessionStatus status) {
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("memberPwd", memberPwd);
-		map.put("memberNo", loginMember.getMemberNo());
+		// 회원 번호가 필요 == Session에 있는 loginMember에 저장되어 있음
+		// --> @ModelAttribute("loginMember")를 통해서 얻어옴
 		
-		int result = service.deleteMember(map);
+		// 입력받은 현재 비밀번호 필요 == parameter로 전달받음(memberPwd)
+		// --> @ModelAttribute를 통해 Member 객체에 자동으로 세팅됨
+		
+		// 회원 번호, 현재 비밀번호를 하나의 VO에 담아서 Service로 전달할 예정
+		// --> 이 작업을 별도로 진행하지 않고 @ModelAttribute를 이용하여 진행
+		
+		int result = service.deleteMember(loginMember);
 		
 		String url = null;
 		

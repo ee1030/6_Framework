@@ -54,8 +54,12 @@ public class MemberDAO2 {
 		return sqlSession.update("memberMapper2.updatePwd", map);
 	}
 
-	public int deleteMember(Map<String, Object> map) {
-		return sqlSession.update("memberMapper2.deleteMember", map);
+	/** 회원탈퇴 DAO
+	 * @param loginMember
+	 * @return result
+	 */
+	public int deleteMember(Member loginMember) {
+		return sqlSession.update("memberMapper2.deleteMember", loginMember);
 	}
 
 }

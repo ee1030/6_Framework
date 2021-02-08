@@ -56,7 +56,7 @@
 </update>
 
 <!-- 회원탈퇴 -->
-<update id="deleteMember" parameterType="map">
+<update id="deleteMember" parameterType="Member">
 	UPDATE MEMBER SET
 	MEMBER_STATUS	= 'N'
 	WHERE MEMBER_NO = #{memberNo}
