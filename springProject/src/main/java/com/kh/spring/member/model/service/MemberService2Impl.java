@@ -129,7 +129,7 @@ public class MemberService2Impl implements MemberService2 {
 			if(enc.matches((String)map.get("memberPwd"), savePwd)) {
 				// 비밀번호가 일치할 경우
 				
-				// 비밀번호 수정 DAO 호출
+				// 회원탈퇴 DAO 호출
 				result = dao.deleteMember(map);
 			}
 		}
