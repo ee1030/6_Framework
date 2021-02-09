@@ -53,5 +53,38 @@
 		<constructor-arg ref="sqlSessionFactoryBean"/>
 	</bean>
 	
+	<!-- 파일 업로드를 위한 CommonsMultipartResolver 객체 bean 등록 -->
+	<!-- MultipartResolver를 bean으로 등록하면
+			 Multipart/form-data 형식의 요청을 받게될 경우
+			 스프링 컨테이너가 해당 bean을 제어하여
+			 input type="file" 태그를 별도로 얻어와서 처리하여
+			 MultipartFile 객체로 반환해줌.
+			 
+			 - input type="file"에 파일이 업로드가 됐든, 안됐든 무조건 얻어옴.
+			 - 태그 하나 또는 업로드된 파일 하나 당 MultipartFile 객체 하나가 반환됨.
+			 
+			 - MultipartResolver가 파일 관련된 내용(multipart/form-data)를
+			 	 다 처리하므로 나머지 일반 텍스트 형태의 데이터를 별도 처리 없이 사용 가능.
+	 -->
+	<bean id="multipartResolver" 
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600"/>
+		<property name="maxUploadSizePerFile" value="20971520"/>
+		<property name="maxInMemorySize" value="104857600"/>
+	</bean>
+	<!--
+		maxUploadSize : 한 요청 당 업로드가 허용되는 최대 용량(바이트 단위)
+		maxUploadSizePerFile : 한 파일 당 업로드가 허용되는 최대 용량(바이트 단위)
+		maxInMemorySize : 파일을 디스크에 저장하지 않고 메모리에 유지하도록
+											허용하는 최대 용량(바이트 단위)
+											지정된 용량보다 업로드 파일이 더 큰 경우 파일로 저장함.
+											(기본값 10240byte)
+		
+		8bit == 1byte
+		1024byte == 1KB
+		1024KB == 1MB
+		104857600byte == 100MB
+		20971520 byte == 20MB
+	-->
 		
 </beans>

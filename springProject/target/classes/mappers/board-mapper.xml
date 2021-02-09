@@ -50,5 +50,18 @@
  	READ_COUNT = READ_COUNT + 1
  	WHERE BOARD_NO = #{boardNo}
  </update>
+ 
+ <!-- 다음 게시글 번호 얻어오기 -->
+ <select id="selectNextNo" resultType="_int">
+ 	SELECT SEQ_BNO.NEXTVAL FROM DUAL
+ </select>
+ 
+ <!-- 게시글 등록 -->
+ <insert id="insertBoard" parameterType="map">
+ 	INSERT INTO BOARD VALUES
+ 	(#{boardNo}, #{boardTitle}, #{boardContent},
+ 	 	DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+ 	  #{memberNo}, #{categoryCode}, #{boardType})
+ </insert>
 	
 </mapper>

@@ -1,6 +1,7 @@
 package com.kh.spring.board.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -54,5 +55,20 @@ public class BoardDAO {
 	 */
 	public int increaseReadCount(int boardNo) {
 		return sqlSession.update("boardMapper.increaseReadCount", boardNo);
+	}
+
+	/** 다음 게시글 번호 얻어오기 DAO
+	 * @return boardNo
+	 */
+	public int selectNextNo() {
+		return sqlSession.selectOne("boardMapper.selectNextNo");
+	}
+
+	/** 게시글 등록 DAO
+	 * @param map
+	 * @return result
+	 */
+	public int insertBoard(Map<String, Object> map) {
+		return sqlSession.insert("boardMapper.insertBoard", map);
 	}
 }

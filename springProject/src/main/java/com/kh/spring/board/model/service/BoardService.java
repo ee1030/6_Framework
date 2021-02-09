@@ -3,6 +3,8 @@ package com.kh.spring.board.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.board.model.vo.PageInfo;
 
@@ -30,8 +32,10 @@ public interface BoardService {
 
 	/** 게시글 등록 Service
 	 * @param map
+	 * @param savePath 
+	 * @param images 
 	 * @return result
 	 */
-	public abstract int insertBoard(Map<String, Object> map);
+	public abstract int insertBoard(Map<String, Object> map, List<MultipartFile> images, String savePath);
 
 }
