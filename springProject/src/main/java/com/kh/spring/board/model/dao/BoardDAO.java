@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.board.model.vo.Attachment;
 import com.kh.spring.board.model.vo.Board;
 import com.kh.spring.board.model.vo.PageInfo;
 
@@ -70,5 +71,13 @@ public class BoardDAO {
 	 */
 	public int insertBoard(Map<String, Object> map) {
 		return sqlSession.insert("boardMapper.insertBoard", map);
+	}
+
+	/** 파일 정보 삽입 DAO
+	 * @param uploadImages
+	 * @return result (성공한 행의 개수)
+	 */
+	public int insertAttachmentList(List<Attachment> uploadImages) {
+		return sqlSession.insert("boardMapper.insertAttachmentList", uploadImages);
 	}
 }
