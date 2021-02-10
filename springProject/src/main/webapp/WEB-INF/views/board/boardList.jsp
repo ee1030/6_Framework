@@ -85,7 +85,13 @@
 								<td>${board.categoryName}</td>
 								<td class="boardTitle">
 									<!----------------- 썸네일 부분 -----------------> 
+									<c:forEach items="${thList}" var="th">
 									
+										<c:if test="${th.parentBoardNo == board.boardNo}">
+											<img src="${contextPath}${th.filePath}/${th.fileName}">
+										</c:if>
+										
+									</c:forEach>
 									${board.boardTitle}
 								</td>
 

@@ -76,20 +76,28 @@
 
 				
 				<!-- 이미지 부분 -->
-                <c:if test="${!empty files }">
+        <c:if test="${!empty attachmentList }">
                 
 					<div class="carousel slide m-3" id="carousel-325626">
-	                    
-	                    <div class="carousel-inner boardImgArea">
-	                    
-		                    
-	                    </div> 
-	                    
-	                    <a class="carousel-control-prev" href="#carousel-325626" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-325626" data-slide="next">
-	                    <span class="carousel-control-next-icon"></span> 
-	                    <span class="sr-only">Next</span></a>
-	                </div>
-                </c:if>
+					                
+						<div class="carousel-inner boardImgArea">
+						
+							<c:forEach var="at" items="${attachmentList}" varStatus="vs">
+		         		<c:set var="src" value="${contextPath}${at.filePath}/${at.fileName}"/>
+		         		
+		              <div class="carousel-item <c:if test="${vs.index == 0}"> active</c:if>">
+		                  <img class="d-block w-100 boardImg" src="${src}" />
+		                  <input type="hidden" value="${at.fileNo}">
+		              </div>
+	             </c:forEach>
+	             
+						</div> 
+						
+						<a class="carousel-control-prev" href="#carousel-325626" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-325626" data-slide="next">
+						<span class="carousel-control-next-icon"></span> 
+						<span class="sr-only">Next</span></a>
+					</div>
+         </c:if>
 				
 
 				<!-- Content -->
@@ -113,11 +121,9 @@
 						</c:if>
 						<a class="btn btn-success" href="${sessionScope.returnListURL}">목록으로</a>
 	                	
-	                	<c:url var="updateUrl" value="#">
-	                		<c:param name="cp" value="${param.cp}" />
-	                	</c:url>
-	                	
-	                	<!-- 로그인된 회원이 글 작성자인 경우 -->
+           	<c:url var="updateUrl" value="${board.boardNo}/update"/>
+           	
+	          <!-- 로그인된 회원이 글 작성자인 경우 -->
 						<c:if test="${(loginMember != null) && (board.memberId == loginMember.memberId)}">
 							<a href="${updateUrl}" class="btn btn-success ml-1 mr-1">수정</a>
 							<button id="deleteBtn" class="btn btn-success">삭제</button> 
