@@ -61,4 +61,11 @@ public interface BoardService {
 	public abstract int updateBoard(Board updateBoard, List<MultipartFile> images, String savePath,
 			boolean[] deleteImages);
 
+	/** summernote 업로드 이미지 저장 Service
+	 * @param uploadFile
+	 * @param savePath
+	 * @return result
+	 */
+	public abstract Attachment insertImage(MultipartFile uploadFile, String savePath);
+
 }
