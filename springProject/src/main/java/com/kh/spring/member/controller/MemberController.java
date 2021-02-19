@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,12 +38,17 @@ public class MemberController {
 	@Autowired  
 	private MemberService service;
 	
+	// Logger 객체 생성 : 로그를 작성할 수 있는 객체
+	private Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 
 	/** 로그인 화면 전환용 Controller
 	 * @return viewName
 	 */
 	@RequestMapping("login")
 	public String loginView() {
+		logger.debug("로그인 화면으로 전환됨(debug)");
+		logger.info("로그인 화면으로 전환됨(info)");
 		return "member/login";
 	}
 	

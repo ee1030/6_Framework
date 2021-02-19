@@ -129,4 +129,11 @@ public class BoardDAO {
 		return sqlSession.delete("boardMapper.deleteAttachment", fileNo);
 	}
 
+	/** DB에 저장된 최근 3일 제외 파일 정보 조회 DAO
+	 * @return dbFileList
+	 */
+	public List<String> selectDBFileList() {
+		return sqlSession.selectList("boardMapper.selectDBFileList");
+	}
+
 }

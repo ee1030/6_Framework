@@ -55,10 +55,15 @@ public class SchedulingTest {
 	 *		cron = "0 0 0 * * *"
 	 * 
 	 */
+	
+	public static int num = 0;
 
 	// 매 분마다 반복 수행
-	@Scheduled(cron="0 * * * * *")
+	//@Scheduled(cron="0 * * * * *")
+	//@Scheduled(fixedDelay = 5000) // 이전 작업 종료 후 5초마다 수행
+	@Scheduled(fixedRate = 5000) // 이전 작업 시작 후 5초마다 수행
 	public void test() {
-		System.out.println("스프링 스케쥴러 테스트 중입니다.");
+		// (주의사항) @Scheduled 어노테이션이 작성된 메소드는 매개변수가 없어야만 한다!
+		//System.out.println("스프링 스케쥴러 테스트 중입니다." + num++);
 	}
 }

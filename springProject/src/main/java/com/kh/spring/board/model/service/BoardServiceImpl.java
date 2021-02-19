@@ -437,4 +437,10 @@ public class BoardServiceImpl implements BoardService{
 		
 		return at;
 	}
+
+	// DB에 저장된 최근 3일 제외 파일 정보를 조회하는 Service 구현
+	@Override
+	public List<String> selectDBFileList() {
+		return dao.selectDBFileList();
+	}
 }
