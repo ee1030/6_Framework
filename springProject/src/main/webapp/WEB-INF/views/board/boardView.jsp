@@ -135,7 +135,7 @@
 			<hr>
 
 			<!-- 댓글 부분 -->
-			
+			<jsp:include page="reply.jsp"/>
 		</div>
 	</div>
 	<jsp:include page="../common/footer.jsp"/>
