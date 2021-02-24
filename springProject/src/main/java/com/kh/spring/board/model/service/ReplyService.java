@@ -25,4 +25,16 @@ public interface ReplyService {
 	 */
 	public abstract int updateReply(Reply reply);
 
+	/** 댓글 삭제 Service
+	 * @param replyNo
+	 * @return result
+	 */
+	public abstract int deleteReply(int replyNo);
+
+	/** 대댓글 삽입 Service
+	 * @param map
+	 * @return result
+	 */
+	public abstract int insertChildReply(Map<String, Object> map);
+
 }

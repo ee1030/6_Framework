@@ -35,19 +35,6 @@ public class ReplyServiceImpl implements ReplyService{
 
 		return dao.insertReply(map);
 	}
-	
-	// 크로스 사이트 스크립트 방지 메소드
-	private String replaceParameter(String param) {
-		String result = param;
-		if(param != null) {
-			result = result.replaceAll("&", "&amp;");
-			result = result.replaceAll("<", "&lt;");
-			result = result.replaceAll(">", "&gt;");
-			result = result.replaceAll("\"", "&quot;");
-		}
-		
-		return result;
-	}
 
 	// 댓글 수정 Service 구현
 	@Transactional(rollbackFor = Exception.class)
@@ -62,5 +49,39 @@ public class ReplyServiceImpl implements ReplyService{
 		
 		return dao.updateReply(reply);
 	}
+
+	// 댓글 삭제 Service 구현
+	@Override
+	public int deleteReply(int replyNo) {
+		return dao.deleteReply(replyNo);
+	}
+	
+	// 크로스 사이트 스크립트 방지 메소드
+	private String replaceParameter(String param) {
+		String result = param;
+		if(param != null) {
+			result = result.replaceAll("&", "&amp;");
+			result = result.replaceAll("<", "&lt;");
+			result = result.replaceAll(">", "&gt;");
+			result = result.replaceAll("\"", "&quot;");
+		}
+		
+		return result;
+	}
+
+	// 대댓글 삽입 Service 구현
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int insertChildReply(Map<String, Object> map) {
+		// 크로스 사이트 스크립팅 방지
+		map.put("replyContent", replaceParameter( (String)map.get("replyContent")) );
+		
+		// ajax로 textarea 내용을 얻어올 경우 개행문자가 \n으로 취급됨.
+		// 개행문자 처리 \n -> <br>
+		map.put("replyContent", ((String)map.get("replyContent")).replaceAll("\n", "<br>") );
+		
+		return dao.insertChildReply(map);
+	}
+
 
 }
